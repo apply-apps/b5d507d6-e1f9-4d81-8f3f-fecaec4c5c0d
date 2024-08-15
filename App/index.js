@@ -1,17 +1,10 @@
 // Filename: index.js
 // Combined code from all files
 
-import React, { useState } from 'react';
-import {
-    SafeAreaView,
-    StyleSheet,
-    Text,
-    TextInput,
-    Button,
-    ActivityIndicator,
-    ScrollView
-} from 'react-native';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react'; 
+import { SafeAreaView, StyleSheet, Text, TextInput, Button, ActivityIndicator, ScrollView } from 'react-native';
+import axios from 'axios'; 
+import * as Updates from 'expo-updates';
 
 const API_URL = 'http://apihub.p.appply.xyz:3300/chatgpt';
 
@@ -21,6 +14,12 @@ export default function App() {
     const [style, setStyle] = useState('');
     const [greeting, setGreeting] = useState('');
     const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        if (Updates.setDisplayName) {
+            Updates.setDisplayName('GREEEET');
+        }
+    }, []);
 
     const generateGreeting = async () => {
         setLoading(true);
@@ -44,7 +43,7 @@ export default function App() {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView contentContainerStyle={styles.scroll}>
-                <Text style={styles.title}>Personalized Greeting Generator</Text>
+                <Text style={styles.title}>GREEEET</Text>
                 <TextInput
                     style={styles.input}
                     placeholder="Recipient"
